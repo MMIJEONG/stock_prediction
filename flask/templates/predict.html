@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>predict_page</title>
+</head>
+<body>
+<p>예측</p>
+    {% for idx in range(result | length)%}
+        <input type='button' value={{result[idx]['stock_name']}} onClick="location.href='predict/{{result[idx]['stock_name']}}'"/>
+    {% endfor %}
+</body>
+</html>

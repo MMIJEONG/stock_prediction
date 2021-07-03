@@ -18,8 +18,8 @@ def prediction():
     cursor = stock_db.cursor(pymysql.cursors.DictCursor)
     sql = "SELECT * FROM stock_item;" #select쿼리
     cursor.execute(sql)
-    #result = cursor.fetchall()#원래코드
-    result = [cursor.fetchone()]#한개만 가져옴#test용
+    result = cursor.fetchall()#원래코드
+    #result = [cursor.fetchone()]#한개만 가져옴#test용
     print(result)
 
     for i in result:

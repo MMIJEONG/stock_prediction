@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>predict_print_page</title>
+</head>
+<body>
+
+<p>{{result['name']}}</p>
+<p>-----------------------------------------------------------</p>
+<p>The previous day's stock price : {{result['pre_price']}}원</p> <!--그전날 종가 출력-->
+<p>Tomorrow's stock price : {{result['tom_price']}}원</p> <!--다음날 예측 종가출력-->
+
+{% if result['percent']>0 %}
+    <p>주식 가격은 {{result['percent']|abs}}% 증가 될 것으로 예상됩니다.</p>
+{% elif result['percent']==0 %}
+    <p>주식 가격은 전날과 동일 할 것으로 예상됩니다</p>
+{% else %}
+    <p>주식 가격은 {{result['percent']|abs}}% 감소 될 것으로 예상됩니다.</p>
+{% endif %}
+<p>-----------------------------------------------------------</p>
+
+</body>
+</html>

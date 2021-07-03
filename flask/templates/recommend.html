@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>recommend_page</title>
+</head>
+<body>
+    오늘의 추천 종목
+    {% for idx in range(result | length)%}
+        <p>{{idx+1}}. {{result[idx]['name']}} ({{result[idx]['percent']}}%)</p>
+    {% endfor %}
+</body>
+</html>
+
