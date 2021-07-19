@@ -5,9 +5,12 @@
     <title>predict_page</title>
 </head>
 <body>
-<p>예측</p>
+<p>{{user_id}}님</p>
+<p>예측</p><!--버튼형식으로 주식종목들을 출력함--><!--하나의 주식종목 버튼을 클릭하면 predict/<target>라우터로 넘어감,target에는 선택한 버튼의 주식종목이름이 들어감 -->
     {% for idx in range(result | length)%}
         <input type='button' value={{result[idx]['stock_name']}} onClick="location.href='predict/{{result[idx]['stock_name']}}'"/>
     {% endfor %}
+<br><br>
+<input type='button' value='메뉴로 돌아가기' onClick="location.href='menu'"/>
 </body>
 </html>

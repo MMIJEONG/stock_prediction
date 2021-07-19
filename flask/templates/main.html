@@ -5,7 +5,24 @@
     <title>main_page</title>
 </head>
 <body>
-<input type='button' value='예측' onClick="location.href='predict'"/>
-<input type='button' value='추천' onClick="location.href='recommend'"/>
+{%with messages = get_flashed_messages()%}
+     {%if messages %}
+      <script type="text/javascript">
+        alert("{{messages[-1]}}");
+      </script>
+    {%endif%}
+{%endwith%}
+<h2>Log-in</h2><!--로그인화면,로그인 버튼을 누르면 정보들이 /login라우터로 전달됨 -->
+<form name="login" action="login" method="post">
+    <h4>ID</h4>
+    <input type="id" name="user_id" id="user_id" placeholder="ID">
+    <h4>Password</h4>
+    <input type="password" name="user_pw" id="user_pw" placeholder="Password">
+    <input type="submit" value="로그인">
+</form>
+
+<p>
+    <input type="button" value="회원가입" onClick="location.href='join'"/><!--회원가입화면으로 넘어감-->
+</p>
 </body>
 </html>

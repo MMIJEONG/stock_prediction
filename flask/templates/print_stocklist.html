@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stocklist_page</title>
+</head>
+<body>
+{%with messages = get_flashed_messages()%}
+     {%if messages %}
+      <script type="text/javascript">
+        alert("{{messages[-1]}}");
+      </script>
+    {%endif%}
+{%endwith%}
+
+    <p>{{user_id}}님</p>
+    <form method="post" action="store_interest"><!--체크한 종목들의 정보를 /store_interest라우터로 넘겨줌 -->
+        {% for idx in range(stocks_info | length)%}
+        <p><!--주식종목들을 체크박스형태로 하나씩 출력해줌,주식종목이름과 현재가격 -->
+            <label><input type="checkbox" name="stock_name" value="{{stocks_info[idx]['name']}}">
+            {{stocks_info[idx]['name']}} {{stocks_info[idx]['pre_price']}}원</label>
+        </p>
+        {% endfor %}
+        <input type="submit" value="관심목록으로 등록">
+    </form>
+    <br>
+    <input type='button' value='메뉴로 돌아가기' onClick="location.href='menu'"/>
+</body>
+</html>

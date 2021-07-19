@@ -2,8 +2,11 @@
 from pandas_datareader import data
 import datetime
 import yfinance as yf
+import time
+import pandas as pd
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
 import pymysql
 
 def prediction():
@@ -34,7 +37,6 @@ def prediction():
         stock_code=name
         stock = data.get_data_yahoo(name, start_date)
         stock = stock[:-1]#stock:주가 데이터들 저장
-
         # 정규화
         def min_max_scaling(x):
             x_np = np.asarray(x)
@@ -144,6 +146,20 @@ def prediction():
         end_time = datetime.datetime.now() #종료시간을 기록
         elapsed_time = end_time - start_time # 경과시간을 구한다
 
+        # 결과 그래프 출력
+        plt.figure(1)
+        plt.plot(train_error_summary, 'gold')
+        plt.plot(test_error_summary, 'b')
+        plt.xlabel('Epoch(x100)')
+        plt.ylabel('Root Mean Square Error')
+
+        plt.figure(2)
+        plt.plot(testY, 'r')
+        plt.plot(test_predict, 'b')
+        plt.xlabel('Time Period')
+        plt.ylabel('Stock Price')
+        #plt.show()
+
         recent_data = np.array([x[len(x)-seq_length : ]])
 
         pre_price=int(price[-1][-1])
@@ -156,7 +172,7 @@ def prediction():
         stock_percent=((test_predict[0]-price[-1][-1])/price[-1][-1])*100
         stock_percent=round(float(stock_percent),3)
 
-        #db에 저장할 데이터
+        #db에 예측결과들을 저장함
         sql = 'REPLACE INTO stock_info (name, code, pre_price, tom_price, percent) VALUES (%s, %s, %s, %s, %s);' #insert쿼리
 
         cursor.execute(sql,(stock_name,stock_code,pre_price,tom_price,stock_percent))#쿼리실행
