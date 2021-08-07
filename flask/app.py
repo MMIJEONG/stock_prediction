@@ -12,6 +12,7 @@ from store_interest_stock import store_interest_stock
 from get_my_interest import get_my_interest
 from get_interest_stock_info import get_interest_stock_info
 from delete_interest_stock import delete_interest_stock
+from search_news_info import search_news_info
 
 app = Flask(__name__)
 app.config["SECRET_KEY"]='678' #session을 사용하려면 필요 '678'같이 아무 숫자 넣어도 됨
@@ -99,6 +100,16 @@ def predict_print_page(target):
 def recommend_page():
     rec_arr = m_recommend() #주식종목추천 모듈
     return render_template('recommend.html',result=rec_arr,user_id=session['user_id'])
+
+@app.route('/news_search')#뉴스검색버튼을 눌렀을때
+def new_search():
+    return render_template('search_news.html',user_id=session['user_id'])#뉴스검색페이지로 이동
+
+@app.route('/news_keyword',methods=['GET', 'POST']) #가입정보저장
+def news_keyword():
+    info=request.form #form에 뉴스키워드들은 받음
+    rec_newsinfo=search_news_info(info)
+    return render_template('print_news.html',result=rec_newsinfo,user_id=session['user_id'])#뉴스출력화면으로 이동
 
 if __name__ == '__main__': #flask를 처음 실행하면 여기부터 실행됨
     #prediction() #주식예측코드실행 예측실행전 stock_item 디비에 주식종목이름,코드가 저장되어있어야함!
