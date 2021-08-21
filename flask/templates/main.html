@@ -12,12 +12,13 @@
       </script>
     {%endif%}
 {%endwith%}
-<h2>Log-in</h2><!--로그인화면,로그인 버튼을 누르면 정보들이 /login라우터로 전달됨 -->
+<h2>Ladoit</h2><!--로그인화면,로그인 버튼을 누르면 정보들이 /login라우터로 전달됨 -->
+<h4>Let's analyze and invest</h4>
 <form name="login" action="login" method="post">
-    <h4>ID</h4>
-    <input type="id" name="user_id" id="user_id" placeholder="ID">
-    <h4>Password</h4>
-    <input type="password" name="user_pw" id="user_pw" placeholder="Password">
+    <div><input type="id" name="user_id" id="user_id" placeholder="ID"></div>
+    <br>
+    <div><input type="password" name="user_pw" id="user_pw" placeholder="Password"></div>
+    <br>
     <input type="submit" value="로그인">
 </form>
 

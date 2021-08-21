@@ -5,13 +5,19 @@
     <title>recommend_page</title>
 </head>
 <body>
-<p>{{user_id}}님</p>
-    오늘의 추천 종목 <!--추천종목이름 현재가격 -> 예측가격(상승률,하락률) 출력-->
+    추천 종목 Top5 <!--추천종목이름 현재가격 -> 예측가격(상승률,하락률) 출력-->
     {% for idx in range(result | length)%}
-        <p>{{idx+1}}. {{result[idx]['name']}} : {{result[idx]['pre_price']}}원 -> {{result[idx]['tom_price']}}원 ({{result[idx]['percent']}}%)</p>
+        {% if result[idx]['percent']>0 %}
+            <p>{{idx+1}}. {{result[idx]['name']}}는 {{result[idx]['tom_price']}}원으로 {{result[idx]['percent']|abs}}% 증가</p>
+        {% elif result[idx]['percent']==0 %}
+            <p>{{idx+1}}. {{result[idx]['name']}}는 {{result[idx]['tom_price']}}원으로 전날과 동일</p>
+        {% else %}
+            <p>{{idx+1}}. {{result[idx]['name']}}는 {{result[idx]['tom_price']}}원으로 {{result[idx]['percent']|abs}}% 감소</p>
+        {% endif %}
     {% endfor %}
 <br>
-<input type='button' value='메뉴로 돌아가기' onClick="location.href='menu'"/>
+<input type='button' value='홈' onClick="location.href='/menu'"/>
+<input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+<input type='button' value='설정' onClick="location.href='/setting'"/>
 </body>
 </html>
-

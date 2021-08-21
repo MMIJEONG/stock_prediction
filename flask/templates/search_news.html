@@ -5,9 +5,14 @@
     <title>search_news_page</title>
 </head>
 <body>
+<p>주요 뉴스</p>
     <form name="news" action="news_keyword" method="post">
         <input id="news" type="text" name="news" placeholder="검색어를 입력하세요" >
         <input type="submit" name="" value="검색">
     </form>
+<br><br><br>
+<input type='button' value='홈' onClick="location.href='/menu'"/>
+<input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+<input type='button' value='설정' onClick="location.href='/setting'"/>
 </body>
 </html>

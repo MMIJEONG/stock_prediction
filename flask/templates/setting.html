@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setting_page</title>
+</head>
+<body>
+<p>설정</p>
+<p>회원 정보</p>
+<div style="height: auto; width: 100%; border:1px solid;">
+    <p>아이디&nbsp;&nbsp;{{user_id}}</p>
+</div>
+<p>앱 정보</p>
+<div style="height: auto; width: 100%; border:1px solid;">
+<p>앱 버전&nbsp;&nbsp;v0.1</p>
+<p><input type='button' value='로그아웃' onClick="location.href='logout'"/></p><!--/logout라우터로 감-->
+</div>
+<br>
+<input type='button' value='홈' onClick="location.href='/menu'"/>
+<input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+<input type='button' value='설정' onClick="location.href='/setting'"/>
+</body>
+</html>

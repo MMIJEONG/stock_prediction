@@ -5,8 +5,7 @@
     <title>print_news_page</title>
 </head>
 <body>
-{{user_id}}님
-<br>
+<p>주요 뉴스</p>
     {% for item in result['items'] %}
     <div>
         <a href="{{item.originallink}}" target="_blank">{{item.title | safe}}</a>
@@ -14,7 +13,9 @@
     {% endfor %}
     <br>
     <input type='button' value='뒤로가기' onClick="location.href='news_search'"/>
-    <br><br>
-    <input type='button' value='메뉴로 돌아가기' onClick="location.href='menu'"/>
+    <br><br><br>
+    <input type='button' value='홈' onClick="location.href='/menu'"/>
+    <input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+    <input type='button' value='설정' onClick="location.href='/setting'"/>
 </body>
 </html>

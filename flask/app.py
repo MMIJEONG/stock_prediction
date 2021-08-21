@@ -69,7 +69,7 @@ def list_page():
 def store_interest():
     info = request.form #관심목록으로 등록하고 싶은 종목들의 정보를 받음
     if store_interest_stock(info,session['user_id']):#정보들을 파라미터로 ,store_interest_stock()를 실행
-        flash("관심목록으로 등록됐습니다.")
+        flash("관심종목으로 등록되었습니다.")
         return redirect('/stock_list')#/stock_list라우터로 redirect해줌
 
 @app.route('/my_interestlist') #관심목록출력
@@ -82,7 +82,7 @@ def my_interestlist():
 def delete_interest():
     info = request.form #삭제하고싶은 종목들의 정보를 받음
     if delete_interest_stock(info,session['user_id']):#delete_interest_stock()실행
-        flash("관심목록에서 삭제되었습니다.")
+        flash("관심종목에서 삭제되었습니다.")
         return redirect('/my_interestlist') #/my_interestlist 라우터로 redirect
 
 
@@ -110,6 +110,9 @@ def news_keyword():
     info=request.form #form에 뉴스키워드들은 받음
     rec_newsinfo=search_news_info(info)
     return render_template('print_news.html',result=rec_newsinfo,user_id=session['user_id'])#뉴스출력화면으로 이동
+@app.route('/setting')#설정화면
+def setting():
+    return render_template('setting.html',user_id=session['user_id'])#설정화면으로 이동
 
 if __name__ == '__main__': #flask를 처음 실행하면 여기부터 실행됨
     #prediction() #주식예측코드실행 예측실행전 stock_item 디비에 주식종목이름,코드가 저장되어있어야함!

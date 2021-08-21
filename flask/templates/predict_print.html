@@ -5,24 +5,23 @@
     <title>predict_print_page</title>
 </head>
 <body>
-{{user_id}}님
-<br>
-<p>{{result['name']}}</p>
-<p>-----------------------------------------------------------</p>
-<p>The previous day's stock price : {{result['pre_price']}}원</p> <!--그전날 종가 출력-->
-<p>Tomorrow's stock price : {{result['tom_price']}}원</p> <!--다음날 예측 종가출력-->
+<p>오늘의 예측</p>
+<p>{{result['name']}}는</p>
+<p>전날 종가 {{result['pre_price']}}원</p> <!--그전날 종가 출력-->
+<p>다음날 예측 종가 {{result['tom_price']}}원으로</p> <!--다음날 예측 종가출력-->
 
 {% if result['percent']>0 %}
-    <p>주식 가격은 {{result['percent']|abs}}% 증가 될 것으로 예상됩니다.</p>
+    <p>{{result['percent']|abs}}% 증가 할 것으로 예상됩니다.</p>
 {% elif result['percent']==0 %}
-    <p>주식 가격은 전날과 동일 할 것으로 예상됩니다</p>
+    <p>전날과 동일 할 것으로 예상됩니다.</p>
 {% else %}
-    <p>주식 가격은 {{result['percent']|abs}}% 감소 될 것으로 예상됩니다.</p>
+    <p>{{result['percent']|abs}}% 감소 할 것으로 예상됩니다.</p>
 {% endif %}
-<p>-----------------------------------------------------------</p>
 <br>
 <input type='button' value='뒤로가기' onClick="location.href='/predict'"/>
 <br><br>
-<input type='button' value='메뉴로 돌아가기' onClick="location.href='/menu'"/>
+<input type='button' value='홈' onClick="location.href='/menu'"/>
+<input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+<input type='button' value='설정' onClick="location.href='/setting'"/>
 </body>
 </html>

@@ -5,7 +5,7 @@ import json
 def search_news_info(info):
     info = info.getlist('news')
     client_id = "발급받은 ClientID"
-    client_secret = "발급받은 ClientSecret"
+    client_secret = "발급받은 Clientsecret"
     encText = urllib.parse.quote(info[0])  # 검색할 키워드
     display = 10  # 검색 결과 출력 건수 지정을 10개로 지정
     start = 1  # 검색 시작위치를 1으로 지정
