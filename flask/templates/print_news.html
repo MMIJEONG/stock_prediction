@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>interestlist_page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {padding: 0; margin: 0; text-decoration: none; list-style: none; font-family: 'Jua', sans-serif;}
+body {background:#DCE4ED; }
+
+    #footer{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 33px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+        margin-bottom: 55px;
+    }
+    .content{
+      margin-left: 20px;
+      font-size: 25px;
+      margin-bottom:28px;
+    }
+</style>
+<body>
+<div class="title">주요 뉴스</div>
+    {% for item in result['items'] %}
+    <div class="content">
+        <a
+        style="padding-top:15px;border-bottom: 1.5px solid #fff ;" 
+        href="{{item.originallink}}" target="_blank">{{item.title | safe}}</a>
+    </div>
+    {% endfor %}
+
+    <input 
+    style="font-size:30px; width:30%;position: fixed; bottom: 55px; right: 10px; font-size:20px; border:none; 
+    padding:15px; border-radius: 30px; background-color: #B7CAE2; box-shadow:5px 5px 0.7em grey;
+    "
+   
+    type='button' value='뒤로가기' onClick="location.href='news_search'"/>
+    
+    
+    <div id="footer">
+        <input class="fbt" type='button' value='홈' onClick="location.href='/menu'"/>
+        <input class="fbt" type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+        <input class="fbt" type='button' value='설정' onClick="location.href='/setting'"/>
+    </div>
+</body>
+</html>

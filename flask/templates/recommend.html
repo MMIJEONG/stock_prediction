@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>interestlist_page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {padding: 0; margin: 0; text-decoration: none; list-style: none; font-family: 'Jua', sans-serif;}
+body {background:#DCE4ED; }
+
+    #footer{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 27px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+        margin-bottom: 55px;
+    }
+
+    .content{
+        font-size: 20px;
+
+    }
+    .c1{
+        margin-bottom: 23px;
+        margin-left: 23px;
+        
+    }
+</style>
+<body>
+    <div class="title">추천 종목 Top5 </div>
+    <div class="content">
+
+<!--추천종목이름 현재가격 -> 예측가격(상승률,하락률) 출력-->
+{% for idx in range(result | length)%}
+{% if result[idx]['percent']>0 %}
+    <div class="c1">{{idx+1}}. {{result[idx]['name']}}는 {{result[idx]['tom_price']}}원으로 
+        <div style="display:inline; color:red; font-weight:bold; font-size: 25px;">
+        {{result[idx]['percent']|abs}}% 증가</div></div>
+{% elif result[idx]['percent']==0 %}
+    <div class="c1">{{idx+1}}. {{result[idx]['name']}}는 {{result[idx]['tom_price']}}원으로 
+        <div style="display:inline; color:green; font-weight:bold; font-size: 25px;">
+        전날과 동일</div></div>
+{% else %}
+    <div class="c1">{{idx+1}}. {{result[idx]['name']}}는 {{result[idx]['tom_price']}}원으로 
+        <div style="display:inline; color:blue; font-weight:bold; font-size: 25px;">
+            {{result[idx]['percent']|abs}}% 감소</div></div>
+{% endif %}
+{% endfor %}
+
+
+    </div>
+    
+    <div id="footer">
+        <input class="fbt" type='button' value='홈' onClick="location.href='/menu'"/>
+        <input class="fbt" type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+        <input class="fbt" type='button' value='설정' onClick="location.href='/setting'"/>
+    </div>
+</body>
+</html>

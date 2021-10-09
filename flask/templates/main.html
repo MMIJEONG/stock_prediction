@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>main_page</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+* {padding: 0; margin: 0; text-decoration: none; list-style: none;}
+body {background:#DCE4ED; font-family: 'Jua', sans-serif; }
+input {font-family: 'Jua', sans-serif;}
+
+
+.contents {font-size: 19px;}
+.contents h1 {text-align: center;}
+.contsBox { width: calc(94% - 46px); height: calc(100vh - 86px); margin: 20px auto; padding: 20px; position: relative;}
+.contsBox:after {content: ''; width: 100%; height: 100%; border: 3px solid #86B1E5; display: block; position: absolute; top: -3px; left: -3px; z-index: -1;}
+/*****/
+
+.font-color {
+        color: #86B1E5;
+      }
+/* 메인(로그인) */
+.login {width: 100%; margin: 100px auto 0; text-align: right;}
+.login:after {content: ''; display: block; clear: both;}
+.login input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #000;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.login a {color: #fff; display: inline-block; margin-top: 10px;}
+
+    #footer{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+     .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 33px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+    }
+     .smalltitle{
+        float: center;
+        text-align: center;
+        justify-content: center;
+    }
+    .content{
+        margin-top: 300px;
+        text-align: center;
+        justify-content: center;
+    }
+
+</style>
+</head>
+<body>
+{%with messages = get_flashed_messages()%}
+     {%if messages %}
+      <script type="text/javascript">
+        alert("{{messages[-1]}}");
+      </script>
+    {%endif%}
+{%endwith%}
+
+<div class="contents">
+    <div class="contsBox">
+        <div class="title">Ladoit</div>
+        <div class="smalltitle">Let's analyze and invest</div>
+
+        <form class="login" name="login" action="login" method="post">
+            <input type="id" name="user_id" id="user_id" placeholder="ID">
+            <input type="password" name="user_pw" id="user_pw" placeholder="Password"><br><br><br>
+            <div class="btncolor">
+
+            <input style="background-color: #B7CAE2;" type="submit" value="로그인">
+            <input style="background-color: #B7CAE2;" type="button" value="회원가입" onClick="location.href='join'"/>   
+
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

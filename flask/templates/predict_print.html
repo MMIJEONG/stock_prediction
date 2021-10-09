@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>interestlist_page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {padding: 0; margin: 0; text-decoration: none; list-style: none; font-family: 'Jua', sans-serif;}
+body {background:#DCE4ED; }
+
+    #footer{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    
+    .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 27px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+        margin-bottom: 55px;
+    }
+    .content{
+        font-size:26px;
+
+text-align:center;
+    }
+
+
+ .material-icons {
+ font-family: 'Material Icons';
+ font-weight: normal;
+ font-style: normal;
+ font-size: 24px;  /* Preferred icon size */
+ display: inline-block;
+ line-height: 1;
+ text-transform: none;
+ letter-spacing: normal;
+ word-wrap: normal;
+ white-space: nowrap;
+ direction: ltr;
+
+ /* Support for all WebKit browsers. */
+ -webkit-font-smoothing: antialiased;
+
+ /* Support for Safari and Chrome. */
+ text-rendering: optimizeLegibility;
+
+ /* Support for Firefox. */
+ -moz-osx-font-smoothing: grayscale;
+
+ /* Support for IE. */
+ font-feature-settings: 'liga';
+ }
+
+    #c1{
+        margin-top:150px;
+        text-align: center;
+        justify-content: center;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        background-color: #fff;
+        width: 100%;
+    }
+</style>
+<body>
+
+<div class="title">오늘의 예측</div>
+
+<div id="c1">
+
+<div class="content">
+    <div>{{result['name']}}는</div>
+    <div>전날 종가 {{result['pre_price']}}원</div> <!--그전날 종가 출력-->
+    <div>다음날 예측 종가 {{result['tom_price']}}원으로</div> <!--다음날 예측 종가출력-->
+    
+    {% if result['percent']>0 %}
+<span class="material-icons" style="font-size: 50px;">
+thumb_up_off_alt
+</span><br>
+        <div style="display:inline-block; border-radius: 30px;  background-color: #FFA9A9; 
+        padding-top: 15px;
+        padding-bottom: 15px;">
+            {{result['percent']|abs}}% 증가 할 것으로 예상됩니다.
+            
+            </div>
+    {% elif result['percent']==0 %}
+    <div style=" display:inline-block; border-radius: 30px;  background-color: #B5FFA9; 
+    padding-top: 15px;
+    padding-bottom: 15px;">전날과 동일 할 것으로 예상됩니다.</div>
+    {% else %}
+<span class="material-icons" style="font-size: 50px;">
+thumb_down_off_alt
+</span><br>
+    <div style=" display:inline-block; border-radius: 30px;  background-color: #B7B2FF; 
+    padding-top: 15px;
+    padding-bottom: 15px;">{{result['percent']|abs}}% 감소 할 것으로 예상됩니다.
+    
+    </div>
+    {% endif %}
+    
+    
+</div>
+
+</div>
+
+
+<input 
+style="position: fixed; bottom: 55px; right: 10px; font-size:20px; border:none; 
+padding:15px; border-radius: 30px; background-color: #B7CAE2; box-shadow:5px 5px 0.7em grey;"
+type='button' value='뒤로가기' onClick="location.href='/predict'"/>
+
+<div id="footer">
+    <input class="fbt" type='button' value='홈' onClick="location.href='/menu'"/>
+    <input class="fbt" type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+    <input class="fbt" type='button' value='설정' onClick="location.href='/setting'"/>
+</div>
+
+
+</body>
+</html>
