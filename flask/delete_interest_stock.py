@@ -4,9 +4,9 @@ def delete_interest_stock(info,user_id):
     info = info.getlist('interest_stock_name')
     #db연동
     stock_db = pymysql.connect(
+        host='localhost',
         user='root',
-        passwd='password',
-        host='127.0.0.1',#localhost
+        passwd='',#자신비밀번호
         db='stock',
         charset='utf8'
     )

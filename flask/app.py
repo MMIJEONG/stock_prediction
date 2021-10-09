@@ -115,6 +115,6 @@ def setting():
     return render_template('setting.html',user_id=session['user_id'])#설정화면으로 이동
 
 if __name__ == '__main__': #flask를 처음 실행하면 여기부터 실행됨
-    #prediction() #주식예측코드실행 예측실행전 stock_item 디비에 주식종목이름,코드가 저장되어있어야함!
+   # prediction() #주식예측코드실행 예측실행전 stock_item 디비에 주식종목이름,코드가 저장되어있어야함!
     app.run(host='0.0.0.0',
             debug=True,use_reloader=False)

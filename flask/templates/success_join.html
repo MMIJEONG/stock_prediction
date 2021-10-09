@@ -3,11 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>success_join</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+* {padding: 0; margin: 0; text-decoration: none; list-style: none;}
+body {background:#DCE4ED; font-family: 'Jua', sans-serif; }
+button {font-family: 'Jua', sans-serif;}
+input {font-family: 'Jua', sans-serif;}
+
+.contents {font-size: 19px;}
+.contents h1 {text-align: center;}
+.contsBox { width: calc(94% - 46px); height: calc(100vh - 86px); margin: 20px auto; border: 3px solid #86B1E5; padding: 20px;}
+/*****/
+.font-color {color: #86B1E5;}
+
+.title{
+    text-align: center;
+    justify-content: center;
+    margin: 100px 0;
+    word-break: keep-all;
+}
+
+.hbutton{
+    float: none; margin: 0 auto; display: block;
+    background-color: #B7CAE2;
+    text-align: center;
+    width: calc(100% - 132px);
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    float: left;
+    border: 1px solid #000;
+    font-size: 16px;
+    float: none; margin: 0 auto; display: block;
+    background-color: #B7CAE2;
+}
+
+</style>
 </head>
 <body>
-<h1>회원가입을 축하합니다!</h1>
-<p>
-    <input type="button" value="로그인" onClick="location.href='/'"/>
-</p>
+    <div class="contsBox">
+        <h1 class="title">회원가입을 축하합니다!</h1>
+        <input class="hbutton" type="button" value="메뉴로 돌아가기" onClick="location.href='/'"/>
+    </div>
 </body>
 </html>

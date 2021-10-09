@@ -2,8 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>stocklist_page</title>
-</head>
+    <title>interestlist_page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {padding: 0; margin: 0; text-decoration: none; list-style: none; font-family: 'Jua', sans-serif;}
+body {background:#DCE4ED; }
+
+    #footer{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .content{
+        display: flex;
+        margin-bottom:23px;
+        width: 100%;
+    }
+    .c1{
+        flex: 1;
+        justify-content: center;
+        margin-left: 7px;
+    }
+    .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 27px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+    }
+</style>
 <body>
 {%with messages = get_flashed_messages()%}
      {%if messages %}
@@ -14,20 +61,39 @@
 {%endwith%}
 
 
-    <p>주식 종목</p>
-    <p>종목이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전날종가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;예측종가</p>
-    <form method="post" action="store_interest"><!--체크한 종목들의 정보를 /store_interest라우터로 넘겨줌 -->
+    <div class="title" style="">주식 종목</div>
+    <div class="content" style="margin-bottom: 15px; border-bottom:1px solid #fff;
+    font-size:22px">
+        <div class="c1" >
+            종목이름
+        </div>
+        <div class="c1" style="text-align:center;">전날종가</div>
+        <div class="c1" style="text-align:center;">예측종가</div>
+    </div>
+  <form method="post" action="store_interest"><!--삭제하고 싶은 종목들의 정보가 /delete_interest라우터로 전달됨-->
         {% for idx in range(stocks_info | length)%}
-        <p><!--주식종목들을 체크박스형태로 하나씩 출력해줌,주식종목이름과 현재가격 -->
+        <div class="content">
+            <div class="c1" style="font-size:19px;">
             <label><input type="checkbox" name="stock_name" value="{{stocks_info[idx]['name']}}">
-            {{stocks_info[idx]['name']}}&nbsp;&nbsp;{{stocks_info[idx]['pre_price']}}원&nbsp;&nbsp;{{stocks_info[idx]['tom_price']}}원</label>
-        </p>
+            {{stocks_info[idx]['name']}} </div>
+            <div class="c1" style="font-size:19px; text-align:center;">{{stocks_info[idx]['pre_price']}}원</div>
+            <div class="c1" style="font-size:19px; text-align:center;">{{stocks_info[idx]['tom_price']}}원</div>
+        </label>
+        </div>
+       
+
         {% endfor %}
-        <input type="submit" value="관심종목등록">
+        <input 
+        style="position: fixed; bottom: 55px; right: 10px; font-size:20px; border:none; 
+        padding:15px; border-radius: 30px; background-color: #B7CAE2; box-shadow:5px 5px 0.7em grey;"
+        type="submit" value="관심종목등록"><!--관심목록들도 체크박스형태로 출력하고 삭제하고 싶은 종목을 체크함-->
+
     </form>
-    <br>
-    <input type='button' value='홈' onClick="location.href='/menu'"/>
-    <input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
-    <input type='button' value='설정' onClick="location.href='/setting'"/>
+    <div id="footer">
+        <input class="fbt" type='button' value='홈' onClick="location.href='/menu'"/>
+        <input class="fbt" type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+        <input class="fbt" type='button' value='설정' onClick="location.href='/setting'"/>
+    </div>
+
 </body>
 </html>

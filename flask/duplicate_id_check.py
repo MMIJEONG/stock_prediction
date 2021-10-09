@@ -3,9 +3,9 @@ import pymysql
 def duplicate_id_check(info):
     #db연동
     stock_db = pymysql.connect(
+        host='127.0.0.1',
         user='root',
-        passwd='password',
-        host='127.0.0.1',#localhost
+        passwd='',#자신비밀번호
         db='stock',
         charset='utf8'
     )

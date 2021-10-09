@@ -3,16 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>menu_page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+* {padding: 0; margin: 0; text-decoration: none; list-style: none;}
+body {background:#DCE4ED; font-family: 'Jua', sans-serif; }
+button {font-family: 'Jua', sans-serif;}
+input {font-family: 'Jua', sans-serif;}
+
+
+.contents {font-size: 19px;}
+.contents h1 {text-align: center;}
+.contsBox { width: calc(94% - 46px); height: calc(100vh - 86px); margin: 20px auto; border: 3px solid #86B1E5; padding: 20px;}
+/*****/
+
+.font-color {
+        color: #86B1E5;
+      }
+
+/* 홈(메뉴) */
+.menu {text-align: center;}
+.menu:after {content: ''; display: block; clear: both;}
+.menu ul li {
+    
+}
+
+.menubutton{
+    width: calc(50% - 32px);
+    margin: 0 10px 20px;
+    padding: 50px 10px;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #000;
+    text-align: center;
+    line-height: 20px;
+    min-height: 44px;  
+    font-size: 24px;
+}
+
+.menutext{
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+}
+
+.menuinterval{
+    line-height: 200px;
+}
+
+.menu ul li:nth-child(2n) {margin-right: 0; }
+.menu ul li a {display: inline-block; vertical-align: middle; color: #000;}
+
+    #footer{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+     .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 33px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+        margin-bottom: 55px;
+    }
+    .content{
+        margin-top: 300px;
+        text-align: center;
+        justify-content: center;
+    }
+</style>
 </head>
+
 <body>
-<input type='button' value='오늘의 예측' onClick="location.href='predict'"/><!--/predict라우터로 감-->
-<input type='button' value='추천 종목 Top5' onClick="location.href='recommend'"/><!--/recommend라우터로 감-->
-<br><br>
-<input type='button' value='주식 종목' onClick="location.href='stock_list'"/><!--/stock_list라우터로 감-->
-<input type='button' value='주요 뉴스' onClick="location.href='news_search'"/><!--/news_search라우터로 감-->
-<br><br><br>
-<input type='button' value='홈' onClick="location.href='/menu'"/><!--메뉴로다시-->
-<input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
-<input type='button' value='설정' onClick="location.href='/setting'"/><!--/setting라우터로 감-->
+    <div class="title">메 뉴</div>
+<div class="contents">
+    <div class="menu">
+        <div class="menuinterval">
+        </div>
+        <input class="menubutton" type='button' value='오늘의 예측' onClick="location.href='predict'"/>
+        <input class="menubutton" type="button" value="추천 종목 Top5" onClick="location.href='recommend'"/>
+        <input class="menubutton" type="button" value="주식 종목" onClick="location.href='stock_list'"/>
+        <input class="menubutton" type="button" value="주요 뉴스" onClick="location.href='news_search'"/>
+    </div>
+</div>
+<div id="footer">
+        <input class="fbt" type='button' value='홈' onClick="location.href='/menu'"/>
+        <input class="fbt" type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+        <input class="fbt" type='button' value='설정' onClick="location.href='/setting'"/>
+</div>
+
 </body>
 </html>

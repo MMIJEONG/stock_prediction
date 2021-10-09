@@ -2,17 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>predict_page</title>
-</head>
+    <title>interestlist_page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {padding: 0; margin: 0; text-decoration: none; list-style: none; font-family: 'Jua', sans-serif;}
+body {background:#DCE4ED; }
+
+    #footer{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #bt1{
+      
+        width:100%;
+        border: 0;
+        border-bottom: 1.5px solid #fff;
+        outline: 0;
+        background-color: #DCE4ED;
+        margin-bottom: 13px;
+        font-size: 34px;
+
+        padding-top: 5px;
+        padding-bottom: 10px;
+        display: block;
+        text-align: center;
+
+      }
+      .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 27px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+        margin-bottom: 55px;
+    }
+
+ .material-icons {
+ font-family: 'Material Icons';
+ font-weight: normal;
+ font-style: normal;
+ font-size: 24px;  /* Preferred icon size */
+ display: inline-block;
+ line-height: 1;
+ text-transform: none;
+ letter-spacing: normal;
+ word-wrap: normal;
+ white-space: nowrap;
+ direction: ltr;
+
+ /* Support for all WebKit browsers. */
+ -webkit-font-smoothing: antialiased;
+
+ /* Support for Safari and Chrome. */
+ text-rendering: optimizeLegibility;
+
+ /* Support for Firefox. */
+ -moz-osx-font-smoothing: grayscale;
+
+ /* Support for IE. */
+ font-feature-settings: 'liga';
+ }
+
+#con{
+  text-align:center;
+}
+</style>
 <body>
-<!--<p>{{user_id}}님</p>-->
-<p>오늘의 예측</p><!--버튼형식으로 주식종목들을 출력함--><!--하나의 주식종목 버튼을 클릭하면 predict/<target>라우터로 넘어감,target에는 선택한 버튼의 주식종목이름이 들어감 -->
-    {% for idx in range(result | length)%}
-        <input type='button' value={{result[idx]['stock_name']}} onClick="location.href='predict/{{result[idx]['stock_name']}}'"/><br><br>
-    {% endfor %}
-<br><br>
-<input type='button' value='홈' onClick="location.href='/menu'"/>
-<input type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
-<input type='button' value='설정' onClick="location.href='/setting'"/>
-</body>
-</html>
+
+    <div class="title">오늘의 예측</div>
+      <!--버튼형식으로 주식종목들을 출력함--><!--하나의 주식종목 버튼을 클릭하면 predict/<target>라우터로 넘어감,target에는 선택한 버튼의 주식종목이름이 들어감 -->
+    
+    <div id="con">
+    
+      {% for idx in range(result | length)%}
+          <input id="bt1"  type='button' value={{result[idx]['stock_name']}} onClick="location.href='predict/{{result[idx]['stock_name']}}'"
+          
+          />
+      {% endfor %}
+    
+    </div>
+    
+    
+    
+    
+    <div id="footer">
+        <input class="fbt" type='button' value='홈' onClick="location.href='/menu'"/>
+        <input class="fbt" type='button' value='관심종목' onClick="location.href='/my_interestlist'"/><!--/my_interestlist라우터로 감-->
+        <input class="fbt" type='button' value='설정' onClick="location.href='/setting'"/>
+    </div>
+    
+    
+    </body>
+    </html>

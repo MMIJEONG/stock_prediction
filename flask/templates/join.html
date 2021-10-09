@@ -2,24 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <title>join_page</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+* {padding: 0; margin: 0; text-decoration: none; list-style: none;}
+body {background:#DCE4ED; font-family: 'Jua', sans-serif; }
+button {font-family: 'Jua', sans-serif;}
+input {font-family: 'Jua', sans-serif;}
+
+.contents {font-size: 19px;}
+.contents h1 {text-align: center;}
+.contsBox { width: calc(94% - 46px); height: calc(100vh - 86px); margin: 20px auto; padding: 20px; position: relative;}
+.contsBox:after {content: ''; width: 100%; height: 100%; border: 3px solid #86B1E5; display: block; position: absolute; top: -3px; left: -3px; z-index: -1;}
+/*****/
+
+.font-color {
+        color: #86B1E5;
+      }
+/* 회원가입 */
+.join {width: 100%; margin: 100px auto 0;}
+.joinBox:after {content: ''; display: block; clear: both;}
+.join input {
+  width: calc(100% - 132px);
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  float: left;
+  border: 1px solid #000;
+  font-size: 16px;
+}
+.join input[type="button"] {width: 100px; margin: 0; padding: 9px 10px; }
+.join div {margin-top:  120px;width: 100%; font-size: 16px; text-align: center;}
+.join a {color: #fff; display: inline-block; margin-top: 10px;}
+
+.buttontype{
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 16px;
+    background-color: #B7CAE2;
+    text-align: center;
+
+}
+
+    #footer{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .fbt{
+      border: 0;  
+      margin-left: 5px;
+      font-size: 30px;
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+     .title{
+        float: center;
+        margin-top: 10px;
+        font-size: 33px;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fff;
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+        background-color: #B7CAE2;
+       
+    }
+    .smalltitle{
+        float: center;
+        text-align: center;
+        justify-content: center;
+    }
+    .content{
+        margin-top: 300px;
+        text-align: center;
+        justify-content: center;
+    }
+    .join input.joinBtn {float: none; margin: 0 auto; display: block;
+            background-color: #B7CAE2;
+    text-align: center;
+    }
+</style>
 </head>
 <body>
-<h2>Ladoit</h2><!--제춣버튼을 누르면 정보가 /store_meminfo라우터로 전달됨 -->
-<h4>Let's analyze and invest</h4>
+ <div class="contents">
+    <div class="contsBox">
+        <div class="title">Ladoit</div>
+        <div class="smalltitle">Let's analyze and invest</div>
 
-    <form name="login" action="store_meminfo" method="post">
-      아이디<br>
-      <input id="user_id" type="text" name="user_ID" placeholder="ID" >
-      <input type="button" name="user_IDcheck" onclick="check()" value="중복확인"><!--중복확인을 누르면 script함수 check()를 실행함-->
-      <br><br>
-      비밀번호<br>
-      <input type="password" name="user_PW" value="" placeholder="Password"><br>
-      <p>
-          <input type="submit" name="" value="회원가입">
-      </p>
-    </form>
-    <br><br>
+        <form class="join" name="login" action="store_meminfo" method="post">
+            <div class="joinBox">
+            <input id="user_id" type="text" name="user_ID" placeholder="ID" >
+            <input style="background-color: #B7CAE2;"type="button" name="user_IDcheck" onclick="check()" value="중복 확인"><!--중복확인을 누르면 script함수 check()를 실행함-->
+            <input type="password" name="user_PW" value="" placeholder="Password"><br>
+            <!--      Password 재확인<br>-->
+            <!--      <input type="password" name="user_PW2" value="123456">-->
+            <!--      <input type="button" name="user_PWcheck" value="비밀번호 재확인">  -->
+            </div>
+            <div>
+                <input class="joinBtn" type="submit" name="" value="회원가입">
+                <a href="main.html" style="color: black;">로그인으로 돌아가기</a>
+            </div>
+        </form>
+    </div>
+
+
 
     <form id="duplicate_form" method="post" action="duplicate_id" target="duplicate"><!--/duplicate_id라우터로 id정보를 전달해 아이디중복을 확인-->
         <input id="checkid" name="checkid" type="hidden" value="">
@@ -32,5 +134,6 @@
             document.getElementById('duplicate_form').submit()
         }
     </script>
+</div>
 </body>
 </html>
